@@ -1,0 +1,23 @@
+-- Problem 1.a
+-- SELECT * FROM frequency WHERE docid='10398_txt_earn';
+
+-- Problem 1.b
+-- SELECT term FROM frequency WHERE docid='10398_txt_earn' AND count=1;
+
+-- Problem 1.c
+-- SELECT term FROM frequency WHERE docid='10398_txt_earn' AND count=1
+-- UNION
+-- SELECT term FROM frequency WHERE docid='925_txt_trade' AND count=1;
+
+-- Problem 1.d
+-- SELECT COUNT(*) FROM (
+-- SELECT DISTINCT (docid) FROM frequency WHERE term='law' OR term='legal' GROUP BY docid
+-- );
+
+-- Problem 1.e
+-- SELECT DISTINCT(docid) FROM frequency GROUP BY docid HAVING SUM(count)>300;
+
+-- Problem 1.f
+SELECT COUNT(*) FROM (
+SELECT DISTINCT (docid) FROM frequency WHERE term='transactions' AND term='world' GROUP BY docid
+);

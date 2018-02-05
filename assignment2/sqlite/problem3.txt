@@ -1,0 +1,28 @@
+-- Problem 3.h
+-- CREATE VIEW freq AS
+-- SELECT * FROM frequency;
+
+-- SELECT SUM(A.count*B.count)
+-- FROM frequency A, freq B
+-- WHERE A.docid<B.docid
+-- GROUP BY A.term, B.term;
+
+-- Problem 3.i
+-- CREATE VIEW newcorp AS
+-- SELECT * FROM frequency
+-- UNION
+-- SELECT 'q' as docid, 'washington' as term, 1 as count 
+-- UNION
+-- SELECT 'q' as docid, 'taxes' as term, 1 as count
+-- UNION 
+-- SELECT 'q' as docid, 'treasury' as term, 1 as count;
+
+CREATE VIEW keywordcorpus1 AS
+SELECT A.docid, SUM(A.count) AS ct, 'g' AS GR
+FROM frequency A, newcorp B
+WHERE B.docid='q' AND A.term=B.term
+GROUP BY A.docid;
+
+SELECT docid, MAX(ct), 'g' AS GR
+FROM keywordcorpus1
+GROUP BY GR;
