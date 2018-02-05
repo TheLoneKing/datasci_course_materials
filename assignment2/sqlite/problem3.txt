@@ -17,12 +17,12 @@
 -- UNION 
 -- SELECT 'q' as docid, 'treasury' as term, 1 as count;
 
-CREATE VIEW keywordcorpus1 AS
-SELECT A.docid, SUM(A.count) AS ct, 'g' AS GR
-FROM frequency A, newcorp B
-WHERE B.docid='q' AND A.term=B.term
-GROUP BY A.docid;
+-- CREATE VIEW keywordcorpus1 AS
+-- SELECT A.docid, SUM(A.count) AS ct, 'g' AS GR
+-- FROM frequency A, newcorp B
+-- WHERE B.docid='q' AND A.term=B.term
+-- GROUP BY A.docid;
 
-SELECT docid, MAX(ct), 'g' AS GR
+SELECT docid, MAX(ct)
 FROM keywordcorpus1
 GROUP BY GR;
